@@ -24,21 +24,21 @@ class Account(models.Model):
             total += transaction.value
         return total
 
-    def entradas(self):
+    def income(self):
         transactions = Transaction.objects.filter(
             account__usuario=self.usuario, value__gt=Decimal('0.00'))
-        entradas = 0
+        income = 0
         for transaction in transactions:
-            entradas += transaction.value
-        return entradas
+            income += transaction.value
+        return income
 
-    def saidas(self):
+    def outcome(self):
         transactions = Transaction.objects.filter(
-            account__usuario=self.usuario, value__lt=Decimal('0.00') )
-        saidas = 0
+            account__usuario=self.usuario, value__lt=Decimal('0.00'))
+        outcome = 0
         for transaction in transactions:
-            saidas += transaction.value
-        return saidas
+            outcome += transaction.value
+        return outcome
 
 
 class Transaction(models.Model):

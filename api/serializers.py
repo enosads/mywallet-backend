@@ -38,8 +38,8 @@ class UsuarioSerializer(serializers.ModelSerializer):
 
 class AccountSerializer(serializers.ModelSerializer):
     total = serializers.SerializerMethodField()
-    entradas = serializers.SerializerMethodField()
-    saidas = serializers.SerializerMethodField()
+    income = serializers.SerializerMethodField()
+    outcome = serializers.SerializerMethodField()
 
     class Meta:
         model = models.Account
@@ -48,11 +48,11 @@ class AccountSerializer(serializers.ModelSerializer):
     def get_total(self, instance):
         return instance.total()
 
-    def get_entradas(self, instance):
-        return instance.entradas()
+    def get_income(self, instance):
+        return instance.income()
 
-    def get_saidas(self, instance):
-        return instance.saidas()
+    def get_outcome(self, instance):
+        return instance.outcome()
 
     def create(self, validated_data):
         usuario = self.context.get('request').user.usuario
