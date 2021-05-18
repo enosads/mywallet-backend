@@ -42,9 +42,9 @@ class LoginAPI(APIView):
 class LoginPorTokenAPI(APIView):
 
     def get(self, request, ):
-        user = request.user
-        if user:
-            usuario = user.usuario
+        usuario = request.user
+        if usuario:
+            usuario = usuario.user
             data = {}
             data.update(serializers.UsuarioSerializer(
                 instance=usuario, context={'request': request}).data),
