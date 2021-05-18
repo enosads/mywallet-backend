@@ -24,6 +24,10 @@ class UsuarioSerializer(serializers.ModelSerializer):
     token = serializers.SerializerMethodField(read_only=True)
     username = serializers.SerializerMethodField(read_only=True)
 
+    class Meta:
+        model = Usuario
+        exclude = ['user']
+
     def get_username(self, instance):
         return instance.user.username
 
