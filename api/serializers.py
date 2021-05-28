@@ -61,13 +61,18 @@ class AccountSerializer(serializers.ModelSerializer):
 
 
 class TransactionSerializer(serializers.ModelSerializer):
+    account = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = models.Transaction
-        exclude = ['account']
+        fields = '__all__'
 
     account_id = serializers.PrimaryKeyRelatedField(
         queryset=models.Account.objects.all(),
         write_only=True, source='account')
+
+    def get_account(self, instance):
+        return instance.account.name
 
     def create(self, validated_data):
         return models.Transaction.objects.create(
