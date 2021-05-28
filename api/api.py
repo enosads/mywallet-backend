@@ -75,7 +75,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
     queryset = models.Transaction.objects.all()
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = (django_filters.DjangoFilterBackend,)
-    filter_fields = '__all__'
+    filter_fields = ['account__id']
 
     def get_queryset(self):
         return self.queryset.filter(
