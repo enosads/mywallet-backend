@@ -45,5 +45,6 @@ class Transaction(models.Model):
     description = models.CharField(max_length=255)
     date = models.DateField()
     value = models.DecimalField(max_digits=12, decimal_places=2)
+    category = models.CharField(max_length=255)
     account = models.ForeignKey(
         Account, models.CASCADE, related_name='transactions')
