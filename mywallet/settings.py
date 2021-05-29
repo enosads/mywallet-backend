@@ -140,7 +140,9 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.rest_framework.DjangoFilterBackend']
+        'django_filters.rest_framework.DjangoFilterBackend'],
+    'COERCE_DECIMAL_TO_STRING': False,
+
 }
 
 django_heroku.settings(locals())
