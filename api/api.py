@@ -79,7 +79,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return self.queryset.filter(
-            account__usuario__user=self.request.user).order_by('date')
+            account__usuario__user=self.request.user).order_by('-date')
 
 
 class CreateUsuarioAPI(rest_api_views.APIView):
